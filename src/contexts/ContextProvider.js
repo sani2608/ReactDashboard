@@ -14,6 +14,8 @@ export const ContextProvider = ({ children }) => {
   const saniArray = ["sani1", "sani2", "sani3", "sani4", "sani5"];
   const [isClicked, setIsClicked] = useState(initialState);
   const [screenSize, setScreenSize] = useState(undefined);
+  const [currentColor, setCurrentColor] = useState("blue");
+  const [currentMode, setCurrentMode] = useState("#fff");
 
   const handleClick = (clicked) => {
     setIsClicked({ ...initialState, [clicked]: true });
@@ -30,6 +32,8 @@ export const ContextProvider = ({ children }) => {
         handleClick,
         screenSize,
         setScreenSize,
+        currentColor,
+        currentMode,
       }}
     >
       {children}
