@@ -31,12 +31,12 @@ const Navbar = () => {
   const {
     activeMenu,
     setActiveMenu,
-    saniArray,
     isClicked,
     setIsClicked,
     handleClick,
     screenSize,
     setScreenSize,
+    currentColor,
   } = useStateContext();
 
   useEffect(() => {
@@ -52,8 +52,7 @@ const Navbar = () => {
   useEffect(() => {
     if (screenSize <= 900) setActiveMenu(false);
     else setActiveMenu(true);
-
-    // return () => {};
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [screenSize]);
 
   return (
@@ -63,28 +62,28 @@ const Navbar = () => {
         customFunc={() => {
           setActiveMenu((prevActiveButton) => !prevActiveButton);
         }}
-        color='blue'
+        color={currentColor}
         icon={<AiOutlineMenu />}
       />
       <div className='flex'>
         <NavButton
           title='Cart'
           customFunc={() => handleClick("cart")}
-          color='blue'
+          color={currentColor}
           icon={<FiShoppingCart />}
         />
         <NavButton
           title='Chat'
           dotColor='#03c9d7'
           customFunc={() => handleClick("chat")}
-          color='blue'
+          color={currentColor}
           icon={<BsChatLeft />}
         />
         <NavButton
           title='Notifications'
           dotColor='#03c9d7'
           customFunc={() => handleClick("notification")}
-          color='blue'
+          color={currentColor}
           icon={<RiNotification3Line />}
         />
         <TooltipComponent content='Profile' position='BottomCenter'>
